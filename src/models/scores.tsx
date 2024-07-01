@@ -4,6 +4,11 @@ const Schema = mongoose.Schema;
 
 const ScoreSchema = new Schema({
   name: { type: String, default: "Anonymous" },
+  difficulty: {
+    type: String,
+    required: true,
+    enum: ["easy", "medium", "hard"],
+  },
   start: { type: Date },
   end: { type: Date },
 });
