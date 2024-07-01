@@ -1,11 +1,12 @@
 import { Router } from "express";
 const router = Router();
 
-/* GET home page. */
-router.get("/", function (req, res, next) {
-  res.json({
-    hi: "hi",
-  });
-});
+import characterController from "../controllers/characterControllers.js";
+
+// GET characters
+router.get("/characters", characterController.get_characters);
+
+// POST new character
+router.post("/characters", characterController.create_character);
 
 export default router;

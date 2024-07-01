@@ -12,7 +12,6 @@ const CharacterSchema = new Schema({
     required: true,
     enum: ["easy", "medium", "hard"],
   },
-  image_url: { type: String, required: true },
 });
 
 const CharacterModel = mongoose.model("Character", CharacterSchema);
