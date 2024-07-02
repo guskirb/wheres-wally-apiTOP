@@ -19,4 +19,7 @@ router.post("/scores/start", scoreController.score_start);
 // UPDATE score
 router.post("/scores/:id/end", scoreController.score_end);
 
+// UPDATE score name
+router.post("/scores/:id/name", scoreController.edit_name);
+
 export default router;

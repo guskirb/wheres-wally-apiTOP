@@ -63,7 +63,6 @@ const scoreController = (() => {
     try {
       const updatedScore = new Score({
         end: new Date(),
-        name: req.body.name,
         _id: req.params.id,
       });
 
@@ -86,10 +85,55 @@ const scoreController = (() => {
     }
   });
 
+  const edit_name = asyncHandler(async (req, res) => {
+    try {
+      let result: any = {
+        success: true,
+      };
+      if (req.body.name !== "") {
+        const updatedScore = new Score({
+          name: req.body.name,
+          _id: req.params.id,
+        });
+
+        const score = await Score.findByIdAndUpdate(
+          req.params.id,
+          updatedScore,
+          {}
+        );
+
+        result.score = score;
+      } else {
+        const updatedScore = new Score({
+          name: "Anonymous",
+          _id: req.params.id,
+        });
+
+        const score = await Score.findByIdAndUpdate(
+          req.params.id,
+          updatedScore,
+          {}
+        );
+
+        result.score = score;
+      }
+
+      res.status(200).json(result);
+      return;
+    } catch (err) {
+      res.status(400).json({
+        success: false,
+        error: err,
+      });
+      return;
+    }
+  });
+
   return {
     get_scores,
     score_start,
     score_end,
+    edit_name,
   };
 })();
 
