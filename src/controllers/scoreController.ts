@@ -37,10 +37,10 @@ const scoreController = (() => {
     }
   });
 
-  const create_score = asyncHandler(async (req, res) => {
+  const score_start = asyncHandler(async (req, res) => {
     try {
       const newScore = new Score({
-        start: req.body.date,
+        start: new Date(),
         difficulty: req.body.difficulty,
       });
 
@@ -59,10 +59,10 @@ const scoreController = (() => {
     }
   });
 
-  const update_score = asyncHandler(async (req, res) => {
+  const score_end = asyncHandler(async (req, res) => {
     try {
       const updatedScore = new Score({
-        end: req.body.date,
+        end: new Date(),
         name: req.body.name,
         _id: req.params.id,
       });
@@ -88,8 +88,8 @@ const scoreController = (() => {
 
   return {
     get_scores,
-    create_score,
-    update_score,
+    score_start,
+    score_end,
   };
 })();
 

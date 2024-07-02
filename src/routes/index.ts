@@ -14,9 +14,9 @@ router.post("/characters", characterController.create_character);
 router.get("/scores", scoreController.get_scores);
 
 // POST new score
-router.post("/scores", scoreController.create_score);
+router.post("/score/start", scoreController.score_start);
 
 // UPDATE score
-router.post("/scores/:id/update", scoreController.update_score);
+router.post("/score/:id/end", scoreController.score_end);
 
 export default router;

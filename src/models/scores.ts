@@ -14,8 +14,8 @@ const ScoreSchema = new Schema({
 });
 
 ScoreSchema.virtual("score").get(function () {
-  return DateTime.fromJSDate(this.start)
-    .diff(DateTime.fromJSDate(this.end), "minutes")
+  return DateTime.fromJSDate(this.start!)
+    .diff(DateTime.fromJSDate(this.end!), "minutes")
     .toObject();
 });
 
