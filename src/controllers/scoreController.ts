@@ -11,6 +11,9 @@ const scoreController = (() => {
           difficulty: {
             $regex: new RegExp(req.query.difficulty as string, "i"),
           },
+          end: {
+            $exists: true,
+          },
         }).exec();
 
         res.status(200).json({
@@ -20,7 +23,11 @@ const scoreController = (() => {
         return;
       } else {
         // Else fetch all characters in DB
-        const scores = await Score.find().exec();
+        const scores = await Score.find({
+          end: {
+            $exists: true,
+          },
+        }).exec();
 
         res.status(200).json({
           success: true,
