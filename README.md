@@ -7,6 +7,7 @@ This is the backend of the Where's Wally game application.
 * Tracks your time taken via the backend to prevent score manipulation.
 * Stores character coordinates.
 * Stores your time taken and player name.
+* Uses Express async handler middleware to catch errors.
 ## Project Stack
 Frontend: <br>
 [![My Skills](https://skillicons.dev/icons?i=ts,css,react,vite)](https://skillicons.dev)<br>
